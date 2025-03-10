@@ -1,6 +1,6 @@
-CREATE TABLE produto (
+CREATE TABLE tb_product (
     id VARCHAR(255) PRIMARY KEY NOT NULL,
-    nome VARCHAR(255) NOT NULL,
-    descricao TEXT,
-    preco DECIMAL(18, 2)
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(18, 2)
 );
