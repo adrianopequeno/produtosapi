@@ -1,16 +1,26 @@
 package com.adriano.produtosapi.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-public class Product {
+@Entity
+@Table(name = "tb_product")
+public class Product implements Serializable{
+    @Serial
+    private static final long serialVersionUID = 1L;
 
+    @Id
     private String id;
-    private String nome;
-    private String descricao;
-    private Double preco;
+    private String name;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+    private Double price;
 
     public String getId() {
         return id;
@@ -20,37 +30,37 @@ public class Product {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
         return "Product{" +
                 "id='" + id + '\'' +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", preco=" + preco +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
                 '}';
     }
 }
