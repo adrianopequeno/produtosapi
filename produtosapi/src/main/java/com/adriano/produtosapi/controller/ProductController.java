@@ -4,6 +4,7 @@ import com.adriano.produtosapi.model.Product;
 import com.adriano.produtosapi.repository.ProductRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -44,5 +45,18 @@ public class ProductController {
         product.setId(id);
         return productRepository.save(product);
     }
-    
+
+    @GetMapping
+    public List<Product> getProductByRequestParam(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "price", required = false) Double price
+    ) {
+        if (name != null) {
+            return productRepository.findByName(name);
+        }
+        if (price != null) {
+            return productRepository.findByPrice(price);
+        }
+        return productRepository.findAll();
+    }
 }
