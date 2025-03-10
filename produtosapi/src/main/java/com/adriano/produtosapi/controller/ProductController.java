@@ -10,7 +10,7 @@ import java.util.UUID;
 @RequestMapping(value = "/products")
 public class ProductController {
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -32,5 +32,10 @@ public class ProductController {
 //        Optional<Product> product = productRepository.findById(id);
 //        return product.isPresent() ? product.get() : null;
         return productRepository.findById(id).orElse(null);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public void deleteProductById(@PathVariable("id") String id) {
+        productRepository.deleteById(id);
     }
 }
